@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  app:
+    image: lscr.io/linuxserver/pyload-ng:latest
+    restart: unless-stopped
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/Berlin
+    volumes:
+      - app_config:/config
+      - $PWD/downloads:/downloads
+    networks:
+      proxy_apps:
+    labels:
+      backups: "true"
+
+volumes:
+  app_config:
+
+networks:
+  proxy_apps:
+    name: proxy_apps
+    external: true
