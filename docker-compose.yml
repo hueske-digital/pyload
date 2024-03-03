@@ -13,8 +13,6 @@ services:
       - $PWD/downloads:/downloads
     networks:
       proxy_apps:
-    labels:
-      backups: "true"
 
 volumes:
   app_config:
